@@ -7,7 +7,7 @@ import { Primitives } from './types'
  * primitive values into a simple string array.
  * @return Returns a simple string array of modifiers that passed resolution.
  */
-export function truthyStringsKeys(modifiers?: Primitives): string[] {
+export default function truthyStringsKeys(modifiers?: Primitives): string[] {
 	return uniq(compact(isArray(modifiers)
 		? flatten(modifiers.map(m => truthyStringsKeys(m)))
 		: isString(modifiers)
