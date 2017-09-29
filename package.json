@@ -1,0 +1,45 @@
+{
+  "name": "truthy-strings-keys",
+  "version": "0.1.0",
+  "description": "Resolves a simple string or a potentially deeply nested structure of primitive values into a simple string array.",
+  "keywords": [
+    "truthy",
+    "strings",
+    "keys",
+    "filter",
+    "compact"
+  ],
+  "author": "Jed Mao <jedmao@outlook.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jedmao/truthy-strings-keys.git"
+  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "ava": {
+    "files": [
+      "dist/**/*.test.js"
+    ],
+    "source": [
+      "dist/**/*.js"
+    ]
+  },
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "lint": "tslint src/**/*.ts",
+    "prepublish": "npm run lint && tsc && ava",
+    "pretest": "tsc",
+    "test": "ava",
+    "watch": "ava --watch"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "tslint": "^5.7.0",
+    "typescript": "^2.5.2"
+  },
+  "dependencies": {
+    "truthy-keys": "^0.1.2"
+  }
+}
