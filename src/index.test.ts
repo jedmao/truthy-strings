@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import { truthyStringsKeys } from './'
+import truthyStringsKeys from './'
 
 test('truthyStringsKeys returns an empty array by default', t => {
 	t.deepEqual(

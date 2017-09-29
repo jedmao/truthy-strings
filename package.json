@@ -1,6 +1,6 @@
 {
   "name": "truthy-strings-keys",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Resolves a simple string or a potentially deeply nested structure of primitive values into a simple string array.",
   "keywords": [
     "truthy",
