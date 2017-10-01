@@ -7,13 +7,24 @@ import { Primitives } from './types'
  * primitive values into a simple string array.
  * @return Returns a simple string array of modifiers that passed resolution.
  */
-export default function truthyStringsKeys(modifiers?: Primitives): string[] {
-	return uniq(compact(isArray(modifiers)
-		? flatten(modifiers.map(m => truthyStringsKeys(m)))
+export default function truthyStringsKeys(
+	modifiers?: Primitives,
+	{
+		unique = false,
+	}: {
+		/**
+		 * Removes duplicate values.
+		 */
+		unique?: boolean
+	} = {},
+): string[] {
+	const result = compact(isArray(modifiers)
+		? flatten(modifiers.map(m => truthyStringsKeys(m, { unique })))
 		: isString(modifiers)
 			? modifiers.split(/\s+/)
 			: truthyKeys(modifiers as {}),
-	))
+	)
+	return unique ? uniq(result) : result
 }
 
 export function compact<T>(arr: T[]) {

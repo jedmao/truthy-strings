@@ -49,13 +49,6 @@ test('truthyStringsKeys returns a list of keys for which their values are truthy
 	)
 })
 
-test('truthyStringsKeys returns unique values', t => {
-	t.deepEqual(
-		truthyStringsKeys(['foo', 'bar', 'foo']),
-		['foo', 'bar'],
-	)
-})
-
 test('truthyStringsKeys omits falsey and non-string values', t => {
 	const values = [
 		'',
@@ -98,5 +91,28 @@ test('truthyStringsKeys returns a simple flat array from a complex nested struct
 		// tslint:disable-next-line:no-any
 		truthyStringsKeys(nested as any),
 		['foo', 'bar', 'qux', 'garpley'],
+	)
+})
+
+test('truthyStringsKeys returns unique values if { unique: true }', t => {
+	const modifiers = [
+		'foo',
+		'bar',
+		[
+			'foo',
+			'bar',
+			{
+				foo: true,
+				bar: true,
+			},
+		],
+	]
+	t.deepEqual(
+		truthyStringsKeys(modifiers),
+		['foo', 'bar', 'foo', 'bar', 'foo', 'bar'],
+	)
+	t.deepEqual(
+		truthyStringsKeys(modifiers, { unique: true }),
+		['foo', 'bar'],
 	)
 })

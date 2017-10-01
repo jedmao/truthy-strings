@@ -16,16 +16,19 @@ values into a simple string array.
 $ npm install truthy-strings-keys
 ```
 
-## Usage examples
+## Usage
+
+### `truthyStringsKeys( modifiers [, options] )`
 
 ```ts
-truthyStringsKeys([
+const modifiers = [
   'foo', [
     {
       bar: true,
       baz: null,
     },
   ],
+  'foo',
   'qux',
   [
     [
@@ -37,7 +40,12 @@ truthyStringsKeys([
       ],
     ],
   ],
-]);
+];
+
+truthyStringsKeys(modifiers);
+// ["foo", "bar", "foo", "qux", "garpley"]
+
+truthyStringsKeys(modifiers, { unique: true });
 // ["foo", "bar", "qux", "garpley"]
 ```
 
