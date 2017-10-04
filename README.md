@@ -18,10 +18,10 @@ $ npm install truthy-strings-keys
 
 ## Usage
 
-### `truthyStringsKeys( modifiers [, options] )`
+### `truthyStringsKeys( deepArray [, options] )`
 
 ```ts
-const modifiers = [
+const deepArray = [
   'foo', [
     {
       bar: true,
@@ -42,10 +42,10 @@ const modifiers = [
   ],
 ];
 
-truthyStringsKeys(modifiers);
+truthyStringsKeys(deepArray);
 // ["foo", "bar", "foo", "qux", "garpley"]
 
-truthyStringsKeys(modifiers, { unique: true });
+truthyStringsKeys(deepArray, { unique: true });
 // ["foo", "bar", "qux", "garpley"]
 ```
 
