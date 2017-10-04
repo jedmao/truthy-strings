@@ -10,6 +10,8 @@ export type Primitives = (
 
 export type Primitive = string | PrimitiveHash
 
-export interface PrimitiveHash {
-	[key: string]: string | boolean | number
+export interface PrimitiveHash extends Hash<string | boolean | number> {}
+
+export interface Hash<T> {
+	[key: string]: T
 }

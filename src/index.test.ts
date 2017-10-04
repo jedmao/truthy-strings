@@ -95,7 +95,7 @@ test('truthyStringsKeys returns a simple flat array from a complex nested struct
 })
 
 test('truthyStringsKeys returns unique values if { unique: true }', t => {
-	const modifiers = [
+	const primitives = [
 		'foo',
 		'bar',
 		[
@@ -108,11 +108,11 @@ test('truthyStringsKeys returns unique values if { unique: true }', t => {
 		],
 	]
 	t.deepEqual(
-		truthyStringsKeys(modifiers),
+		truthyStringsKeys(primitives),
 		['foo', 'bar', 'foo', 'bar', 'foo', 'bar'],
 	)
 	t.deepEqual(
-		truthyStringsKeys(modifiers, { unique: true }),
+		truthyStringsKeys(primitives, { unique: true }),
 		['foo', 'bar'],
 	)
 })
