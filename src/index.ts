@@ -2,27 +2,28 @@ import truthyKeys from 'truthy-keys'
 
 import { Primitives } from './types'
 
+export interface TruthyStringsKeysOptions {
+	/**
+	 * Removes duplicate values.
+	 */
+	unique?: boolean
+}
+
 /**
  * Resolves a simple string or a potentially deeply nested structure of
  * primitive values into a simple string array.
- * @return Returns a simple string array of modifiers that passed resolution.
  */
 export default function truthyStringsKeys(
-	modifiers?: Primitives,
+	primitives?: Primitives,
 	{
 		unique = false,
-	}: {
-		/**
-		 * Removes duplicate values.
-		 */
-		unique?: boolean
-	} = {},
+	}: TruthyStringsKeysOptions = {},
 ): string[] {
-	const result = compact(isArray(modifiers)
-		? flatten(modifiers.map(m => truthyStringsKeys(m, { unique })))
-		: isString(modifiers)
-			? modifiers.split(/\s+/)
-			: truthyKeys(modifiers as {}),
+	const result = compact(isArray(primitives)
+		? flatten(primitives.map(m => truthyStringsKeys(m, { unique })))
+		: isString(primitives)
+			? primitives.split(/\s+/)
+			: truthyKeys(primitives as {}),
 	)
 	return unique ? uniq(result) : result
 }
@@ -61,6 +62,7 @@ export function uniq<T>(arr: T[]) {
 }
 
 export {
+	Hash,
 	Primitive,
 	Primitives,
 	PrimitiveHash,
