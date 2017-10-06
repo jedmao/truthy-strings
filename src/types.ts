@@ -5,12 +5,19 @@ export interface RecursiveArray<T> extends Array<T | RecursiveArray<T>> {}
 
 export type Primitives = (
 	Primitive |
-	ListOfRecursiveArraysOrValues<Primitive>
+	PrimitiveHash |
+	ListOfRecursiveArraysOrValues<Primitive | PrimitiveHash>
 )
 
-export type Primitive = string | PrimitiveHash
+export type Primitive = (
+	string |
+	number |
+	boolean |
+	null |
+	undefined
+)
 
-export interface PrimitiveHash extends Hash<string | boolean | number> {}
+export interface PrimitiveHash extends Hash<Primitive> {}
 
 export interface Hash<T> {
 	[key: string]: T

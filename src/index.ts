@@ -14,7 +14,7 @@ export interface TruthyStringsKeysOptions {
  * primitive values into a simple string array.
  */
 export default function truthyStringsKeys(
-	primitives?: Primitives,
+	primitives?: Primitives | Primitives[],
 	{
 		unique = false,
 	}: TruthyStringsKeysOptions = {},
