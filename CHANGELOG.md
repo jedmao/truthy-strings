@@ -1,3 +1,6 @@
+## 0.4.1
+- Be more forgiving with nested primitives.
+
 ## 0.4.0
 - Export `TruthyStringsKeysOptions` interface.
 - Export `Hash<T>` interface.

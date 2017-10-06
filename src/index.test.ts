@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import truthyStringsKeys from './'
+import truthyStringsKeys, { Primitives } from './'
 
 test('truthyStringsKeys returns an empty array by default', t => {
 	t.deepEqual(
@@ -58,11 +58,9 @@ test('truthyStringsKeys omits falsey and non-string values', t => {
 		false,
 		42,
 		undefined,
-		void 0,
 	]
 	t.deepEqual(
-		// tslint:disable-next-line:no-any
-		truthyStringsKeys(values as any),
+		truthyStringsKeys(values),
 		['foo'],
 	)
 })
@@ -75,7 +73,7 @@ test('truthyStringsKeys returns a simple flat array from a complex nested struct
 				baz: null,
 			},
 		],
-		'qux',
+		'qux' as Primitives,
 		[
 			[
 				[
@@ -88,8 +86,7 @@ test('truthyStringsKeys returns a simple flat array from a complex nested struct
 		],
 	]
 	t.deepEqual(
-		// tslint:disable-next-line:no-any
-		truthyStringsKeys(nested as any),
+		truthyStringsKeys(nested),
 		['foo', 'bar', 'qux', 'garpley'],
 	)
 })
