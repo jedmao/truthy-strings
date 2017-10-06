@@ -1,3 +1,6 @@
+## 0.4.2
+- Improve flatten type information.
+
 ## 0.4.1
 - Be more forgiving with nested primitives.
 

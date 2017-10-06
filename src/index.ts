@@ -32,7 +32,7 @@ export function compact<T>(arr: T[]) {
 	return isArray(arr) ? arr.filter(identity) : []
 }
 
-export function flatten<T>(arr: T[]) {
+export function flatten<T>(arr: T[][]): T[] {
 	// tslint:disable-next-line:no-any
 	return (arr || []).reduce((a, b) => a.concat(b as any), [])
 }

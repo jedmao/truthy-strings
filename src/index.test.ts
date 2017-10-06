@@ -73,7 +73,7 @@ test('truthyStringsKeys returns a simple flat array from a complex nested struct
 				baz: null,
 			},
 		],
-		'qux' as Primitives,
+		['qux' as Primitives],
 		[
 			[
 				[
@@ -86,7 +86,7 @@ test('truthyStringsKeys returns a simple flat array from a complex nested struct
 		],
 	]
 	t.deepEqual(
-		truthyStringsKeys(nested),
+		truthyStringsKeys(nested as Primitives),
 		['foo', 'bar', 'qux', 'garpley'],
 	)
 })
