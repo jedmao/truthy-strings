@@ -1,6 +1,6 @@
 {
   "name": "truthy-strings-keys",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Resolves a simple string or a potentially deeply nested structure of primitive values into a simple string array.",
   "keywords": [
     "truthy",
@@ -26,20 +26,24 @@
     ]
   },
   "scripts": {
+    "clean": "rimraf dist truthy-strings-keys-*",
+    "prebuild": "npm run clean && npm run lint",
     "build": "tsc",
+    "prebuild:watch": "npm run prebuild",
     "build:watch": "tsc --watch",
-    "lint": "tslint src/**/*.ts",
-    "prepublish": "npm run lint && tsc && ava",
-    "pretest": "tsc",
+    "lint": "tslint --project tsconfig.test.json",
+    "pretest": "npm run build",
     "test": "ava",
-    "watch": "ava --watch"
+    "watch": "npm test -- --watch",
+    "prepack": "npm test"
   },
   "devDependencies": {
-    "ava": "^0.22.0",
-    "tslint": "^5.7.0",
-    "typescript": "^2.5.2"
+    "ava": "^0.24.0",
+    "rimraf": "^2.6.2",
+    "tslint": "^5.9.1",
+    "typescript": "^2.6.2"
   },
   "dependencies": {
-    "truthy-keys": "^0.1.2"
+    "truthy-keys": "^0.1.3"
   }
 }

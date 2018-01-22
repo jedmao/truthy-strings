@@ -1,3 +1,7 @@
+## 0.4.3
+- Disable sourcemaps for distribution.
+- Fix tslint.
+
 ## 0.4.2
 - Improve flatten type information.
 
