@@ -51,3 +51,28 @@ truthyStringsKeys(deepArray, { unique: true });
 
 See [the tests](https://github.com/jedmao/truthy-strings-keys/blob/master/src/index.test.ts).
 
+## Testing
+
+Run the following command:
+
+```
+$ npm test
+```
+
+This will build scripts, run tests and generate a code coverage report. Anything less than 100% coverage will throw an error.
+
+### Watching
+
+For much faster development cycles, run the following commands in 2 separate processes:
+
+```
+$ npm run build:watch
+```
+
+Compiles TypeScript source into the `./dist` folder and watches for changes.
+
+```
+$ npm run watch
+```
+
+Runs the tests in the `./dist` folder and watches for changes.
